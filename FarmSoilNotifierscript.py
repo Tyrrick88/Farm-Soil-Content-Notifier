@@ -1,6 +1,7 @@
 import serial
 import time
 import smtplib
+import emailConfig
 
 # Serial communication setup
 ser = serial.Serial('COM3', 9600)  # Replace 'COM3' with the port your Arduino is connected to
@@ -23,7 +24,7 @@ def main():
 
         # Send email every 6 hours
         if time.localtime().tm_hour % 6 == 0:
-            send_email(sensor_data)
+            emailConfig(sensor_data)
             print("Email sent!")
 
         time.sleep(10)  # Adjust the delay as needed
